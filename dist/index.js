@@ -1,1 +1,1 @@
-!function(e,o){"object"==typeof exports&&"object"==typeof module?module.exports=o():"function"==typeof define&&define.amd?define([],o):"object"==typeof exports?exports.Hui=o():e.Hui=o()}(self,(function(){return console.log("hi"),{}}));
+!function(e,o){"object"==typeof exports&&"object"==typeof module?module.exports=o():"function"==typeof define&&define.amd?define([],o):"object"==typeof exports?exports.Hui=o():e.Hui=o()}(self,(function(){return console.log("hi2"),{}}));
