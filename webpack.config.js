@@ -1,6 +1,6 @@
 const path = require('path')
 
-
+const HTMLWebpackPlugin = require('html-webpack-plugin')
 module.exports = {
     mode: "production",
     entry: {
@@ -16,5 +16,11 @@ module.exports = {
             test: /\.tsx?$/,
             loader: 'awesome-typescript-loader'
         }]
-    }
+    },
+    plugins: [
+        new HTMLWebpackPlugin({
+            title: "deUI",
+            template: "index.html"
+        })
+    ]
 }
