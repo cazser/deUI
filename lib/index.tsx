@@ -1,7 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom"
-import Button from './Button'
+import Icon from './Icon'
 
 
-
-ReactDOM.render(<Button/>, document.querySelector("#root"))
+ReactDOM.render(<Icon/>, document.querySelector("#root"))
