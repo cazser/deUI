@@ -1,9 +1,11 @@
 import React from "react";
-
-const Dialog =()=>{
+interface Props{
+visible: boolean
+}
+const Dialog: React.FunctionComponent<Props> =(props)=>{
 	return(
 	<div>
-		对话框
+		{props.visible? "对话框" : null}
 	</div>
 	)
 }

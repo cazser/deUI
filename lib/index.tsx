@@ -1,12 +1,10 @@
 import React from "react";
 import ReactDOM from "react-dom"
-import Icon from './Icon'
-const fn :React.MouseEventHandler= (e)=>{
-	console.log(e.target)
-}
+import Dialog from './dialog/Dialog.example';
+
+
 
 ReactDOM.render(
 <div>
-	<Icon name="QQ"  onClick={fn} onMouseEnter={()=>{console.log("Enter")}}
-	 		onMouseLeave={()=>{console.log("Leave")}}/>
+<Dialog />	
 </div>, document.querySelector("#root"))
