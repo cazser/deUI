@@ -8,7 +8,9 @@ const Icon: React.FunctionComponent<IconProps> = (props)=>{
 	console.log(wechat)
 	return (
 		<span>
-			{props.name}
+			<svg>
+				<use xlinkHref='#wechat'></use>
+			</svg>
 		</span>
 	)
 }
