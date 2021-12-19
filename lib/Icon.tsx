@@ -1,15 +1,14 @@
 import React from 'react'
-import wechat from './icons/wechat.svg'
-import QQ from './icons/QQ.svg'
+import './importIcons'
+import "./icon.scss"
 interface IconProps{
 	name:string
 }
 const Icon: React.FunctionComponent<IconProps> = (props)=>{
-	console.log(wechat)
-	console.log(QQ)
+	
 	return (
 		<span>
-			<svg>
+			<svg className='deui-icon'>
 				<use xlinkHref={`#${props.name}`}></use>
 			</svg>
 		</span>
