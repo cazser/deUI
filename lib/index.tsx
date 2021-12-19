@@ -3,4 +3,8 @@ import ReactDOM from "react-dom"
 import Icon from './Icon'
 
 
-ReactDOM.render(<Icon name="wechat" />, document.querySelector("#root"))
+ReactDOM.render(
+<div>
+	<Icon name="wechat" />
+	<Icon name="QQ" />
+</div>, document.querySelector("#root"))
