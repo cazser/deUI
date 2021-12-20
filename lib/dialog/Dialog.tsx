@@ -1,25 +1,30 @@
 import Icon from "../Icon";
 import React, { Fragment, ReactChild, ReactFragment, ReactPortal } from "react";
+import scopedClassMaker from "../scopedClassMaker";
 import './dialog.scss'
 interface Props {
 visible: boolean;
 children: ReactChild | ReactFragment | ReactPortal
 }
+
+
+const scopedClass = scopedClassMaker("deui-dialog")
+const sc = scopedClass
 const Dialog: React.FunctionComponent<Props> =(props)=>{
 	return(
 	<div>
 		{props.visible? 
 		<Fragment>
-		<div className="deui-dialog-mask"></div>
-		<div className="deui-dialog">
-			<div className="deui-dialog-close">
+		<div className={sc("mask")}></div>
+		<div className={sc()}>
+			<div className={sc("close")}>
 				<Icon name="close" />
 			</div>
-			<header className="deui-dialog-header">提示</header>
-			<main className="deui-dialog-main">
+			<header className={sc("header")}>提示</header>
+			<main className={sc("main")}>
 			{props.children}
 			</main>
-			<footer className="deui-dialog-footer">
+			<footer className={sc("footer")}>
 				<button>ok</button>
 				<button>cancel</button>
 			</footer>
