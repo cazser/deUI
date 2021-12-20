@@ -1,3 +1,5 @@
+
+
 .deui-dialog{
 	position: fixed;
 	width: 10em;height: 10em;
@@ -12,4 +14,8 @@
 	height: 100%;	
 	background: fade-out(black,  0.5);
 	}
+	&-header{}
+	&-main{}
+	&-footer{}
+	&-close{}
 }
