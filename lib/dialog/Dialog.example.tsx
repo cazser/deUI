@@ -7,7 +7,9 @@ import React
 	 return(
 		<div>
 			<button onClick={()=>setX((x)=>!x)}>click</button>
-			<Dialog visible={x}></Dialog>
+			<Dialog visible={x}>
+				<div>hi</div>
+			</Dialog>
 		</div>
 	 )
  }
