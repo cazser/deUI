@@ -8,6 +8,7 @@ visible: boolean;
 children: ReactChild | ReactFragment | ReactPortal;
 buttons: Array<ReactElement>;
 onClose: React.MouseEventHandler;
+CloseOnMaskClick?: boolean
 }
 
 
@@ -18,11 +19,16 @@ const Dialog: React.FunctionComponent<Props> =(props)=>{
 	const onClickClose: React.MouseEventHandler=(e)=>{
 		props.onClose(e)
 	}
+	const onClickMask: React.MouseEventHandler=(e)=>{
+		if(props.CloseOnMaskClick){
+			props.onClose(e);
+		}
+	}
 	return(
 	<div>
 		{props.visible? 
 		<Fragment>
-		<div className={sc("mask")}></div>
+		<div className={sc("mask")} onClick={onClickMask}></div>
 		<div className={sc()}>
 			<div className={sc("close")} onClick={onClickClose}>
 				<Icon name="close" />
@@ -39,6 +45,9 @@ const Dialog: React.FunctionComponent<Props> =(props)=>{
 		 : null}
 	</div>
 	)
+}
+Dialog.defaultProps={
+	CloseOnMaskClick: false
 }
 
 export default Dialog
