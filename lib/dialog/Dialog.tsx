@@ -1,5 +1,6 @@
 import Icon from "../Icon";
 import React, { Fragment, ReactChild, ReactElement, ReactFragment, ReactPortal } from "react";
+import ReactDOM from 'react-dom';
 import scopedClassMaker from "../scopedClassMaker";
 import './dialog.scss'
 
@@ -24,7 +25,8 @@ const Dialog: React.FunctionComponent<Props> =(props)=>{
 			props.onClose(e);
 		}
 	}
-	return(
+
+const x = 
 	<div>
 		{props.visible? 
 		<Fragment>
@@ -44,6 +46,8 @@ const Dialog: React.FunctionComponent<Props> =(props)=>{
 		</Fragment>
 		 : null}
 	</div>
+	return(
+		ReactDOM.createPortal(x, document.body)
 	)
 }
 Dialog.defaultProps={
