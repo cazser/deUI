@@ -7,7 +7,11 @@ import React
 	 return(
 		<div>
 			<button onClick={()=>setX((x)=>!x)}>click</button>
-			<Dialog visible={x}>
+			<Dialog visible={x}
+				buttons={[
+					<button onClick={()=>setX(false)}>1</button>,
+					<button onClick={()=>setX(false)}>2</button>
+				]}>
 				<div>hi</div>
 			</Dialog>
 		</div>

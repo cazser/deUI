@@ -1,10 +1,11 @@
 import Icon from "../Icon";
-import React, { Fragment, ReactChild, ReactFragment, ReactPortal } from "react";
+import React, { Fragment, ReactChild, ReactElement, ReactFragment, ReactPortal } from "react";
 import scopedClassMaker from "../scopedClassMaker";
 import './dialog.scss'
 interface Props {
 visible: boolean;
-children: ReactChild | ReactFragment | ReactPortal
+children: ReactChild | ReactFragment | ReactPortal;
+buttons: Array<ReactElement>
 }
 
 
@@ -25,8 +26,7 @@ const Dialog: React.FunctionComponent<Props> =(props)=>{
 			{props.children}
 			</main>
 			<footer className={sc("footer")}>
-				<button>ok</button>
-				<button>cancel</button>
+				{props.buttons}
 			</footer>
 		</div>
 		</Fragment>
