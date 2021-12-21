@@ -6,7 +6,8 @@ import {alert, confirm} from './Dialog'
 	 return(
 		<div>
 			<button onClick={()=>{alert("1")}}>alert</button>
-			<button onClick={()=>{confirm("1", ()=>{}, ()=>{})}}>confirm</button>
+			<button onClick={()=>{confirm("1", ()=>{console.log("你点击了yes")}, 
+											   ()=>{console.log("你点击了no")})}}>confirm</button>
 		</div>
 	 )
  }
