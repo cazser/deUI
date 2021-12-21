@@ -7,7 +7,7 @@ import './dialog.scss'
 interface Props {
 visible: boolean;
 children: ReactChild | ReactFragment | ReactPortal;
-buttons: Array<ReactElement>;
+buttons?: Array<ReactElement>;
 onClose: React.MouseEventHandler;
 CloseOnMaskClick?: boolean
 }
@@ -40,7 +40,9 @@ const x =
 			{props.children}
 			</main>
 			<footer className={sc("footer")}>
-				{props.buttons}
+				{props.buttons && props.buttons.map((button, index)=>
+					React.cloneElement(button, {key:index})
+				)}
 			</footer>
 		</div>
 		</Fragment>
@@ -54,4 +56,21 @@ Dialog.defaultProps={
 	CloseOnMaskClick: false
 }
 
+const alert=(content: string)=>{
+const component = 
+		<Dialog visible={true} onClose={()=>{
+			ReactDOM.render(React.cloneElement( component, {visible:false}), div)
+			ReactDOM.unmountComponentAtNode(div)
+			div.remove()
+		}}>
+			{content}
+		</Dialog>
+const div = document.createElement("div")
+document.body.appendChild(div)
+ReactDOM.render(component, div)
+}
+const confirm=(content: string)=>{
+
+}
+export {confirm, alert}
 export default Dialog
