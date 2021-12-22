@@ -58,59 +58,45 @@ Dialog.defaultProps={
 	CloseOnMaskClick: false
 }
 
-const alert=(content: string)=>{
-const component = 
-		<Dialog visible={true} onClose={()=>{
-			ReactDOM.render(React.cloneElement( component, {visible:false}), div)
-			ReactDOM.unmountComponentAtNode(div)
-			div.remove()
-		}}>
-			{content}
+const modal=(content: ReactNode, buttons?:Array<ReactElement>, afterClose?: ()=>void)=>{
+	const close=()=>{
+		ReactDOM.render(React.cloneElement( component, {visible:false}), div)
+		ReactDOM.unmountComponentAtNode(div)
+		div.remove()
+		
+	}
+	const component = 
+		<Dialog 
+			visible={true} 
+			onClose={()=>{close(); afterClose&&afterClose();}} 
+			buttons={buttons}>
+			<div>{content}</div>
 		</Dialog>
-const div = document.createElement("div")
-document.body.appendChild(div)
-ReactDOM.render(component, div)
-}
-const confirm=(content: string, yes?: ()=>void, no?: ()=>void)=>{
-	const onYes=()=>{ 	
-		ReactDOM.render(React.cloneElement( component, {visible:false}), div)
-			ReactDOM.unmountComponentAtNode(div)
-			div.remove()
-			yes&&yes();
-		}
-	const onNo=()=>{ 	
-		ReactDOM.render(React.cloneElement( component, {visible:false}), div)
-			ReactDOM.unmountComponentAtNode(div)
-			div.remove()
-			no&&no();
-	}	
-	const component = <Dialog visible={true} onClose={onNo}
-							buttons={[
-							<button onClick={onYes}>yes</button>, 
-							<button onClick={onNo}>no</button>]}>
-						{content}
-					 </Dialog>
 	const div = document.createElement("div")
 	document.body.appendChild(div)
 	ReactDOM.render(component, div)
-
+	return close
 }
 
-const modal = (content: ReactNode| ReactFragment)=>{
-	const onClose=()=>{
-			ReactDOM.render(React.cloneElement( component, {visible:false}), div)
-			ReactDOM.unmountComponentAtNode(div)
-			div.remove()	
-	}
-	const component=<Dialog
-					onClose={onClose} visible={true}
-					>
-						<div>{content}</div>
-					</Dialog>
-	const div = document.createElement("div")
-	document.body.appendChild(div)
-	ReactDOM.render(component, div)	
-	return onClose			
+const alert=(content: string)=>{
+const button = <button onClick={()=>close()}>ok</button>
+const close = 	modal(content, [button])
 }
+const confirm=(content: string, yes?: ()=>void, no?: ()=>void)=>{
+	const onYes=()=>{ 	
+			close();
+			yes&&yes();
+		}
+	const onNo=()=>{ 	
+			close();
+			no&&no();
+	}	
+	const	buttons=[
+				<button onClick={onYes}>yes</button>, 
+				<button onClick={onNo}>no</button>]
+	const close =modal(content, buttons, no)
+}
+
+
 export {confirm, alert, modal}
 export default Dialog
