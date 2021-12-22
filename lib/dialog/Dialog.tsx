@@ -9,7 +9,8 @@ visible: boolean;
 children: ReactChild | ReactFragment | ReactPortal;
 buttons?: Array<ReactElement>;
 onClose: React.MouseEventHandler;
-CloseOnMaskClick?: boolean
+CloseOnMaskClick?: boolean;
+enableMask?:boolean;
 }
 
 
@@ -30,7 +31,9 @@ const x =
 	<div>
 		{props.visible? 
 		<Fragment>
+			{props.enableMask &&
 		<div className={sc("mask")} onClick={onClickMask}></div>
+		}
 		<div className={sc()}>
 			<div className={sc("close")} onClick={onClickClose}>
 				<Icon name="close" />
@@ -55,7 +58,8 @@ const x =
 	)
 }
 Dialog.defaultProps={
-	CloseOnMaskClick: false
+	CloseOnMaskClick: false,
+	enableMask:true
 }
 
 const modal=(content: ReactNode, buttons?:Array<ReactElement>, afterClose?: ()=>void)=>{
