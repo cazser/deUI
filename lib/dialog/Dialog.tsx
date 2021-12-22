@@ -1,5 +1,5 @@
 import Icon from "../Icon";
-import React, { Fragment, ReactChild, ReactElement, ReactFragment, ReactPortal } from "react";
+import React, { Fragment, ReactChild, ReactElement, ReactFragment, ReactPortal, ReactNode } from "react";
 import ReactDOM from 'react-dom';
 import scopedClassMaker from "../scopedClassMaker";
 import './dialog.scss'
@@ -39,11 +39,13 @@ const x =
 			<main className={sc("main")}>
 			{props.children}
 			</main>
+			{props.buttons && props.buttons.length>0 &&
 			<footer className={sc("footer")}>
 				{props.buttons && props.buttons.map((button, index)=>
 					React.cloneElement(button, {key:index})
 				)}
 			</footer>
+			}
 		</div>
 		</Fragment>
 		 : null}
@@ -93,5 +95,22 @@ const confirm=(content: string, yes?: ()=>void, no?: ()=>void)=>{
 	ReactDOM.render(component, div)
 
 }
-export {confirm, alert}
+
+const modal = (content: ReactNode| ReactFragment)=>{
+	const onClose=()=>{
+			ReactDOM.render(React.cloneElement( component, {visible:false}), div)
+			ReactDOM.unmountComponentAtNode(div)
+			div.remove()	
+	}
+	const component=<Dialog
+					onClose={onClose} visible={true}
+					>
+						<div>{content}</div>
+					</Dialog>
+	const div = document.createElement("div")
+	document.body.appendChild(div)
+	ReactDOM.render(component, div)	
+	return onClose			
+}
+export {confirm, alert, modal}
 export default Dialog
