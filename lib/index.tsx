@@ -1,10 +1,10 @@
 import React from "react";
 import ReactDOM from "react-dom"
-import Dialog from './dialog/Dialog.example';
+import Layout_example from "./layout/Layout.example";
 import './index.scss'
 
 
 ReactDOM.render(
 <div>
-<Dialog />	
+<Layout_example />	
 </div>, document.querySelector("#root"))
