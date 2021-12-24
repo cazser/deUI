@@ -1,13 +1,15 @@
 import React from 'react'
-const Layout : React.FunctionComponent= ()=>{
+import scopedClassMaker from '../scopedClassMaker'
+const sc = scopedClassMaker("deui-layout")
+const Layout : React.FunctionComponent= (props)=>{
 
 return (
 
-<div>
+	<div className={sc()}>
+		{props.children}
+	</div>
 
-</div>
-
-)
+	)
 
 }
 
