@@ -1,10 +1,11 @@
 import React from "react";
 import ReactDOM from "react-dom"
-import Layout_example from "./layout/Layout.example";
+
 import './index.scss'
+import ScrollExample from "./scroll/scroll.example";
 
 
 ReactDOM.render(
 <div>
-<Layout_example />	
+	<ScrollExample></ScrollExample>
 </div>, document.querySelector("#root"))
