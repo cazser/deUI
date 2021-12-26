@@ -1,10 +1,10 @@
 import React from 'react'
-const Scroll : React.FunctionComponent= ()=>{
-
+const Scroll : React.FunctionComponent= (props)=>{
+const {children} = props;
 return (
 
 <div>
-	hi
+	{children}
 </div>
 
 )
