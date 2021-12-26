@@ -5,7 +5,7 @@ const ScrollExample = ()=>{
 	return (
 		<div>
 		<div>
-			<Scroll>
+			<Scroll style={{height:400, border: "1px solid red"}}>
 		<p>1</p>
 		<p>2</p>
 		<p>3</p>

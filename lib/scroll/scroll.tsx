@@ -1,10 +1,16 @@
-import React from 'react'
-const Scroll : React.FunctionComponent= (props)=>{
-const {children} = props;
+import React, { HTMLAttributes } from 'react'
+import './scroll.scss'
+interface Props extends HTMLAttributes<HTMLDivElement> {
+
+}
+const Scroll : React.FunctionComponent<Props> = (props)=>{
+const {children, ...rest} = props;
 return (
 
-<div>
+<div className='deui-scroll' {...rest}>
+	<div className="deui-scroll-inner">
 	{children}
+	</div>
 </div>
 
 )
