@@ -13,7 +13,6 @@
 
 	&-track{
 		width: 10px;
-		border: 1px solid greenyellow;
 		position: absolute;
 		right:0;
 		top:0;
@@ -25,7 +24,9 @@
 		border: 1px solid;
 		position: absolute;
 		top:0;
-		left:0;
-		width: 100%;
+		background: rgb(128, 128, 128, 0.8);
+		left: 1px;
+		width: 8px;
+		border-radius: 4px;
 	}
 }
