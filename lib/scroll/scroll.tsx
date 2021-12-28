@@ -1,4 +1,4 @@
-import React, { HTMLAttributes, UIEventHandler, useState, useRef } from 'react'
+import React, { HTMLAttributes, UIEventHandler, useState, useRef, useEffect } from 'react'
 import './scroll.scss'
 import scrollbarWidth from './scrollbarWidth';
 
@@ -13,13 +13,19 @@ const scrollHeight = e.currentTarget.scrollHeight;
 const viewHeight = e.currentTarget.getBoundingClientRect().height;
 setBarHeight(viewHeight*viewHeight/scrollHeight);
 }
-const containerRef = useRef(null);
+const containerRef = useRef<HTMLDivElement>(null);
+useEffect(()=>{
+const scrollHeight = containerRef.current!.scrollHeight;
+const viewHeight = containerRef.current!.getBoundingClientRect().height;
+setBarHeight(viewHeight*viewHeight/scrollHeight);
+}, [])
 return (
 
 <div className='deui-scroll' {...rest}>
 	<div className="deui-scroll-inner" 
 		style={{right: - scrollbarWidth()}}
-		onScroll={onScroll}>
+		onScroll={onScroll}
+		ref={containerRef}>
 	{children}
 	</div>
 	<div className='deui-scroll-track'>
