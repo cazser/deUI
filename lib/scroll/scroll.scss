@@ -11,12 +11,21 @@
 	
 	}
 
-	&-bar{
+	&-track{
 		width: 10px;
-		border: 1px solid red;
+		border: 1px solid greenyellow;
 		position: absolute;
 		right:0;
 		top:0;
 		height:100%;
+	}
+
+	&-bar{
+		height: 30px;
+		border: 1px solid;
+		position: absolute;
+		top:0;
+		left:0;
+		width: 100%;
 	}
 }
